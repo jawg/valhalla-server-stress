@@ -71,7 +71,7 @@ class RouteSimulation extends Simulation {
         }
         .exec(
           http("${startRegion} to ${endRegion}").get(API_ROUTE)
-            .queryParam("json", """{"locations":[{"lat":${startLat},"lon":${startLng}},{"lat":${endLat},"lon":${endLng}}],"costing":"${API_COSTING}"}""")
+            .queryParam("json", """{"locations":[{"lat":${startLat},"lon":${startLng}},{"lat":${endLat},"lon":${endLng}}],"costing":"${API_COSTING}","directions_type":"none"}""")
             .check(status.in(200))
         )
         .inject(rampUsers(USERS) during RAMP_TIME)
